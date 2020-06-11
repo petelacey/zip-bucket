@@ -83,7 +83,8 @@ module.exports = (storage) => (options) => {
         }
     }
     function getListOfFromFiles() {
-        return promiseRetry((retry) => storage.bucket(fromBucket).getFiles({prefix:fromPath}).catch(retry), backoffStrategy)
+        // return promiseRetry((retry) => storage.bucket(fromBucket).getFiles({prefix:fromPath}).catch(retry), backoffStrategy)
+        return promiseRetry((retry) => storage.bucket(fromBucket).getFiles().catch(retry), backoffStrategy)
         .then((data)=>(data[0]));
     }
 
